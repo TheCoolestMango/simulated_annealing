@@ -6,5 +6,5 @@ The database used for the information about cities, such as their population, th
 The generated paths for each cooling (annealing) rate are compared in two ways:
 
 * By plotting the resulting total distances of generated paths over each iteration (see figure below):
-
+![total_dist](img/task4.png)
 * By animating the changes in graphs of paths.
