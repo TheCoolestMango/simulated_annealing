@@ -8,3 +8,4 @@ The generated paths for each cooling (annealing) rate are compared in two ways:
 * By plotting the resulting total distances of generated paths over each iteration (see figure below):
 ![total_dist](img/task4.png)
 * By animating the changes in graphs of paths.
+The resulting animations are saved in the results directory
