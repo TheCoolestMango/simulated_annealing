@@ -122,12 +122,33 @@ cities_fast = [[top30.iloc[ind]["address"] for ind in path] for path in fast_pat
 """### Library for graph visualization"""
 import networkx as nx
 
+# make overlay
+import json
+ 
+# Opening JSON file
+with open('russia.json') as json_file:
+    source = json.load(json_file)[0]['geojson']['coordinates']
+
+coord = []
+for i in source:
+    coord = coord + i[0]
+
+# Since some part of Russia is located in west semisphere, for proper display we need to convert such coordinates
+# add 360 to the degree value
+for i in range(len(coord)):
+    x = coord[i][0]
+    if x < 0:
+        coord[i][0] += 360
+coord = np.array(coord)
+
 """### Frame update"""
 
 def update(frame, params):
   city_names, path, ax = params
   # erase last frame
   ax.clear()
+  # add the outline of the country
+  ax.plot(coord[:,0], coord[:,1], 'bo')
 
   graph = nx.DiGraph()
   for i in range(len(path[frame])):
